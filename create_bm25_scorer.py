@@ -34,12 +34,3 @@ def create_scorer():
 
 if __name__ == '__main__':
     create_scorer()
-
-# class CreateBM25Scorer(Resource):
-#     model = PhraseModel
-#     def get(self):
-#         # 1. fetch all phrases
-#         corpus = list(map(lambda x: x.value, self.model.query.all()))
-#         # 2. tokenize corpus
-
-#         return {'message':'nah'}

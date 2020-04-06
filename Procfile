@@ -1,2 +1,2 @@
 web: uwsgi uwsgi.ini
-worker: worker.py
+worker: python worker.py
