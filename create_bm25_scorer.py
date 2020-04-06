@@ -23,12 +23,14 @@ def create_scorer():
     tokenized_phrase = [word_tokenize(sent) for sent in phrases]
 
     # 3. initialise BM25 scorer
+    print('init bm25_scorer')
     bm25_scorer = BM25(tokenized_phrase)
 
     # 4. save scorer & corresponded intent id
     os.makedirs('.scorer',exist_ok=True)
     pickle.dump(bm25_scorer, open('./scorer/bm25_scorer.pkl','wb'))
     pickle.dump(itoid, open('./scorer/itoid.pkl','wb'))
+    print('finished process')
 
 if __name__ == '__main__':
     create_scorer()
