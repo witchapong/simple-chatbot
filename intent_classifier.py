@@ -4,8 +4,8 @@ import pandas as pd
 
 def get_intent(sentence):
     # load bm25 scorer & id mapper
-    bm25_scorer = pickle.load(open('./scorer/bm25_scorer.pkl','rb'))
-    itoid = pickle.load(open('./scorer/itoid.pkl','rb'))
+    bm25_scorer = pickle.load(open('bm25_scorer.pkl','rb'))
+    itoid = pickle.load(open('itoid.pkl','rb'))
 
     tokenized_sent = word_tokenize(sentence)
     scores = bm25_scorer.get_scores(tokenized_sent)

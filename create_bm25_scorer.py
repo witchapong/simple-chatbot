@@ -26,9 +26,9 @@ def create_scorer():
     bm25_scorer = BM25(tokenized_phrase)
 
     # 4. save scorer & corresponded intent id
-    os.makedirs('./scorer',exist_ok=True)
-    pickle.dump(bm25_scorer, open('./scorer/bm25_scorer.pkl','wb'))
-    pickle.dump(itoid, open('./scorer/itoid.pkl','wb'))
+    # os.makedirs('./scorer',exist_ok=True)
+    pickle.dump(bm25_scorer, open('bm25_scorer.pkl','wb'))
+    pickle.dump(itoid, open('itoid.pkl','wb'))
 
 if __name__ == '__main__':
     create_scorer()
