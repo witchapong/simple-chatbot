@@ -31,6 +31,19 @@ def upload_to_aws(local_file, bucket, s3_file):
         print("Credentials not available")
         return False
 
+def upload_to_aws_(local_file, bucket, s3_file):
+    s3_resource = boto3.resource('s3', aws_access_key_id=ACCESS_KEY, aws_secret_access_key=SECRET_KEY)
+    try:
+        s3_resource.Object(bucket, local_file).upload_file(Filename=s3_file)
+        print("Upload successfully...")
+        return True
+    except FileNotFoundError:
+        print("File is not founded...")
+        return False
+    except NoCredentialsError:
+        print("Credentials are not available...")
+        return False  
+
 def create_scorer():
     from app import create_app
     app = create_app()
@@ -52,7 +65,10 @@ def create_scorer():
     print('cwd:',os.getcwd())
     print('files in dir:',os.listdir())
     print('uploading to S3...')
-    upload_to_aws(local_file='bm25_scorer.pkl', bucket=os.environ.get('S3_BUCKET_NAME'), s3_file='bm25_scorer.pkl')
+    # upload_to_aws(local_file='bm25_scorer.pkl', bucket=os.environ.get('S3_BUCKET_NAME'), s3_file='bm25_scorer.pkl')
+    upload_to_aws_(local_file='bm25_scorer.pkl', bucket=os.environ.get('S3_BUCKET_NAME'), s3_file='bm25_scorer.pkl')
+    upload_to_aws_(local_file='itoid.pkl', bucket=os.environ.get('S3_BUCKET_NAME'), s3_file='itoid.pkl')
+
 
 if __name__ == '__main__':
     create_scorer()
