@@ -29,6 +29,8 @@ def create_scorer():
     # os.makedirs('./scorer',exist_ok=True)
     pickle.dump(bm25_scorer, open('bm25_scorer.pkl','wb'))
     pickle.dump(itoid, open('itoid.pkl','wb'))
+    print('cwd:',os.getcwd())
+    print('files in dir:',os.listdir())
 
 if __name__ == '__main__':
     create_scorer()
