@@ -6,6 +6,7 @@ import pandas as pd
 def get_intent(sentence):
     # load bm25 scorer & id mapper
     print('cwd:',os.getcwd())
+    print('files in dir:',os.listdir())
     bm25_scorer = pickle.load(open('bm25_scorer.pkl','rb'))
     itoid = pickle.load(open('itoid.pkl','rb'))
 
