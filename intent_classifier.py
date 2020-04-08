@@ -1,9 +1,11 @@
+import os
 import pickle
 from pythainlp.tokenize import word_tokenize
 import pandas as pd
 
 def get_intent(sentence):
     # load bm25 scorer & id mapper
+    print('cwd:',os.cwd())
     bm25_scorer = pickle.load(open('bm25_scorer.pkl','rb'))
     itoid = pickle.load(open('itoid.pkl','rb'))
 
