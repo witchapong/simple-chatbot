@@ -1,6 +1,6 @@
 from flask_restful import Resource, reqparse
 from flask_jwt import jwt_required
-from intent_classifier import get_intent
+import requests
 from models.response import ResponseModel
 from numpy.random import choice
 
@@ -16,7 +16,8 @@ class Chat(Resource):
     def post(self):
         payload = self.__class__.parser.parse_args()
         # 1. get intent
-        intent_id = get_intent(payload['value'])
+        resp = requests.get(url="http://localhost:8080/intent_classifier",json=payload)
+        intent_id = resp.json()['intent_id']
 
         # 2. get intent response
         model_obj = choice(ResponseModel.query.filter_by(intent_id=intent_id).all())

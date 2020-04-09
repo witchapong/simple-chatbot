@@ -3,4 +3,6 @@ __pycache__/
 venv/
 *.db
 .DS_Store
-.scorer/
+bm25_scorer.pkl
+itoid.pkl
+s3_upload.py
