@@ -6,6 +6,7 @@
 # app = create_app()
 # app.app_context().push()
 import os
+import requests
 from models.phrase import PhraseModel
 from pythainlp.tokenize import word_tokenize
 from gensim.summarization.bm25 import BM25
@@ -51,9 +52,9 @@ def create_scorer():
     upload_to_aws(local_file='bm25_scorer.pkl', bucket=BUCKET_NAME, s3_file='bm25_scorer.pkl')
     upload_to_aws(local_file='itoid.pkl', bucket=BUCKET_NAME, s3_file='itoid.pkl')
 
-    # 5. serve intent classification API locally
-    print('starting instent classifier API locally...')
-    os.system("python intent_classifier.py")
+    # 5. request intent classifier service to fetch weight from S3
+    resp = requests.get(url='https://bm25-classifier-api.herokuapp.com/fetch_classifier')
+    print(resp.json())
 
 # for testing locally
 if __name__ == '__main__':

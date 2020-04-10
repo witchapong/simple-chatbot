@@ -27,7 +27,6 @@ def get_intent(sentence):
 
 def create_app():
     app = Flask(__name__)
-    app.secret_key = 'mick'
     return app
 
 def create_api(app):

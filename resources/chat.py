@@ -16,7 +16,7 @@ class Chat(Resource):
     def post(self):
         payload = self.__class__.parser.parse_args()
         # 1. get intent
-        resp = requests.get(url="http://127.0.0.1:8080/intent_classifier",json=payload)
+        resp = requests.get(url="https://bm25-classifier-api.herokuapp.com/intent_classifier",json=payload)
         intent_id = resp.json()['intent_id']
 
         # 2. get intent response
