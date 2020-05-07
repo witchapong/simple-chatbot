@@ -43,6 +43,7 @@ class LineChat(Resource):
 def handle_message(event):
 
     # 1. get intent
+    print(f'text:{event.message.text}')
     resp = requests.get(url="http://35.223.169.18:5000/intent_classifier",json={'value':event.message.text})
     intent_id = resp.json()['intent_id']
 
