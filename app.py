@@ -9,7 +9,7 @@ from resources.response import Response
 from resources.phrase import Phrase, FitPhrases
 from resources.chat import Chat
 from resources.user import UserRegister
-from resources.LineChat import LineChat
+from resources.chat_line import LineChat
 
 def create_app():
     app = Flask(__name__)
