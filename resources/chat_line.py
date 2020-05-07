@@ -24,9 +24,10 @@ class LineChat(Resource):
 
         # get X-Line-Signature header value
         signature = request.headers['X-Line-Signature']
-
+        print(f'signature: {signature}')
         # get request body as text
         body = request.get_data(as_text=True)
+        print(f'body: {body}')
         # app.logger.info("Request body: " + body)
 
         # handle webhook body
@@ -47,7 +48,8 @@ def handle_message(event):
 
     # 2. get intent response
     reply_text = choice(ResponseModel.query.filter_by(intent_id=intent_id).all()).json()['value']
-
+    print('USE resource called...')
+    
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_text))
