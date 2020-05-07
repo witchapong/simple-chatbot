@@ -48,8 +48,8 @@ def handle_message(event):
 
     # 2. get intent response
     reply_text = choice(ResponseModel.query.filter_by(intent_id=intent_id).all()).json()['value']
-    print('USE resource called...')
-    
+    print(f'USE resource called: reply_text: {reply_text}')
+    print(f'reply token: {event.reply_token}')
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=reply_text))
