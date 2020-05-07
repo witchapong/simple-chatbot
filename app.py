@@ -9,6 +9,7 @@ from resources.response import Response
 from resources.phrase import Phrase, FitPhrases
 from resources.chat import Chat
 from resources.user import UserRegister
+from resources.LineChat import LineChat
 
 def create_app():
     app = Flask(__name__)
@@ -27,6 +28,7 @@ def create_api(app):
     api.add_resource(Response, '/response')
     api.add_resource(Phrase, '/phrase')
     api.add_resource(Chat, '/chat')
+    api.add_resource(LineChat, '/webhook')
     api.add_resource(FitPhrases,'/fit_phrases')
     api.add_resource(UserRegister, '/register')
 
