@@ -1,9 +1,5 @@
 from flask_restful import Resource, reqparse
-from flask_jwt import jwt_required
 from models.phrase import PhraseModel
-from rq import Queue
-from worker import conn
-from create_bm25_scorer import create_scorer
 
 class Phrase(Resource):
     post_parser = reqparse.RequestParser()
@@ -55,9 +51,3 @@ class Phrase(Resource):
             model_obj.delete_from_db()
             return {'message':'Phrase deleted.'}
         return {'message','Phrase not found.'}, 404
-
-class FitPhrases(Resource):
-    def post(self):
-        q = Queue(connection=conn)
-        q.enqueue(create_scorer)
-        return {'message':'FitPhrase resource called!'}
