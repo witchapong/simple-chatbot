@@ -59,5 +59,5 @@ class Phrase(Resource):
 class FitPhrases(Resource):
     def post(self):
         q = Queue(connection=conn)
-        result = q.enqueue(create_scorer)
+        q.enqueue(create_scorer)
         return {'message':'FitPhrase resource called!'}
