@@ -1,10 +1,9 @@
 import os
 from flask import Flask
 from flask_restful import Api
-from flask_jwt import JWT
 
 from db import db
-from resources.intent import Intent, IntentList
+from resources.intent import Intent, IntentList, PutToS3
 from resources.response import Response
 from resources.phrase import Phrase, FitPhrases
 from resources.chat import Chat
@@ -29,8 +28,7 @@ def create_api(app):
     api.add_resource(Phrase, '/phrase')
     api.add_resource(Chat, '/chat')
     api.add_resource(LineChat, '/webhook')
-    api.add_resource(FitPhrases,'/fit_phrases')
-    api.add_resource(UserRegister, '/register')
+    api.add_resource(PutToS3, '/put_to_s3')
 
 app = create_app()
 create_api(app)
