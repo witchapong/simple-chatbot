@@ -10,8 +10,6 @@ from resources.phrase import Phrase, FitPhrases
 from resources.chat import Chat
 from resources.user import UserRegister
 
-# jwt = JWT(app ,authenticate, identity)
-
 def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL','sqlite:///data.db')
