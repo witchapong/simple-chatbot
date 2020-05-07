@@ -5,9 +5,8 @@ from flask_restful import Api
 from db import db
 from resources.intent import Intent, IntentList, PutToS3
 from resources.response import Response
-from resources.phrase import Phrase, FitPhrases
+from resources.phrase import Phrase
 from resources.chat import Chat
-from resources.user import UserRegister
 from resources.chat_line import LineChat
 
 def create_app():
