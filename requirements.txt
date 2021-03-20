@@ -23,7 +23,7 @@ googleapis-common-protos==1.51.0
 idna==2.9
 isort==4.3.21
 itsdangerous==1.1.0
-Jinja2==2.11.1
+Jinja2==2.11.3
 jmespath==0.9.5
 lazy-object-proxy==1.4.3
 line-bot-sdk==1.16.0
